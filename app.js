@@ -28,12 +28,12 @@ var Blog=mongoose.model("Blog",blogSchema);
 //RESTful ROUTES
 app.get("/",function(req, res) {  //HOME ROUTE REDIRECTS TO INDEX ROUTE
     res.redirect("/blogs");
-})
+});
 //INDEX ROUTE
 app.get("/blogs",async function(req,res){
     try
     {
-        let blogs=await Blog.find({})
+        let blogs=await Blog.find({});
         res.render("index.ejs",{blogs:blogs});
     }
     catch(err)
