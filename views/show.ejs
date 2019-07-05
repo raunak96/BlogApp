@@ -1,0 +1,38 @@
+<% include partials/header.ejs %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header"><%= blog.title %></div>
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= blog.image %>" >
+        </div>
+        <div style="margin:10px 0;"class="content">
+            <div class="meta">
+                <span><%= blog.created.toDateString() %></span>
+            </div>
+        </div>
+        <div style="margin:12px 0;" class="description">
+            <p><%- blog.body %></p>     <!-- IF WE USE < %-  INSTEAD OF < %=, HTML TAGS WILL ALSO BE EVALUATED in body if present -->
+        </div>
+        
+        <!--EDIT BUTTON-->
+        <a class="ui basic black animated button" href="/blogs/<%= blog._id %>/edit" tabindex="0">
+                <div class="visible content">Edit</div>
+                <div class="hidden content">
+                    <i class="edit icon"></i>
+                </div>
+            </a>
+            
+        <!--FORM FOR DELETE -->
+        <form id="delete" action="/blogs/<%= blog._id %>?_method=delete" method="post">  <!-- METHOD OVERRIDING -->
+            <button class="ui red basic animated button" tabindex="0">
+                <div class="visible content">Delete</div>
+                <div class="hidden content">
+                    <i class="trash icon"></i>
+                </div>
+            </button>
+        </form>
+        
+    </div>
+</div>
+<% include partials/footer.ejs %>

@@ -1,0 +1,26 @@
+<% include partials/header.ejs %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= blog.title %></div>
+    
+    <form class="ui form" action="/blogs/<%= blog._id %>?_method=put" method="post" > 
+    
+    <!-- FORM DOES NOT HAVE PUT METHOD(ONLY GET AND POST),HENCE TO USE PUT METHOD,WE USE METHOD OVERRIDING TO OVERRIDE POST REQUEST TO PUT REQUEST
+    1.?_method=put OVERRIDES POST METHOD
+    2.FOR THIS TO WORK,WE INSTALL METHOD OVERRIDE PACKAGE:---   npm install method-override --save
+    3.AT app.js(routes page),JUST LIKE OTHER PACKAGES STORE AND USE IT USING A VARIABLE -->
+    
+        <div class="field">
+            <label>Title<input type="text" name="title" value="<%= blog.title %>"></label>
+        </div>                                                  <!-- FOR EDIT DATA HAS TO BE PREFILLED WHICH IS THEN EDITED -->
+        <div class="field">                                     <!-- HENCE,WE USE VALUE ATTRIBUTE -->
+            <label>Image<input type="text" name="image" value="<%= blog.image %>"></label>
+        </div>
+        <div class="field">
+            <label>Blog Content<textarea name="body"><%= blog.body %></textarea></label>
+        </div>
+        <input class="ui orange basic big button" type="submit">
+    </form>
+</div>
+
+<% include partials/footer.ejs %>

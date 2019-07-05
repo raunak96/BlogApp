@@ -1,0 +1,40 @@
+<% include partials/header.ejs %>
+
+<div class="ui main text container">
+    <div class="ui huge header">Blog App</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">   <!-- MAKES HORIZONTAL SEPERATION LIKE HR BETWEEN TAGS INSIDE ITEM CLASS -->
+            <%for(var i=0;i<blogs.length;i++)
+            {%>
+                <div class="item">
+                    <div class="image">                                <!-- ALL THESE PROPERTIES OF BLOG OBJECT DESIGNED USING "ITEM" IN SEMANTIC UI -->
+                        <img src="<%= blogs[i].image %>" >    
+                    </div>
+                    
+                    <div class="content">
+                        <a class="header" href="/blogs/<%= blogs[i]._id %>"> <%= blogs[i].title %> </a>
+                        
+                        <div class="meta">
+                            <span><%= blogs[i].created.toDateString() %></span>
+                        </div>
+                        
+                        <div class="description">
+                            <p><%= blogs[i].body.substring(0,150) %>...</p>  <!--SHOWS ONLY 150 LETTERS IN INDEX PAGE,FULL CONTENT IN SHOW PAGE -->    
+                        </div>
+                        
+                        <div class="extra">
+                            <a class="ui floated basic violet button" href="/blogs/<%= blogs[i]._id %>">
+                                Read More  <i class="angle double right icon"></i>
+                            </a>  
+                        </div>                        
+                    
+                    </div>
+
+                </div>
+            <%}%>
+        </div>
+    </div>
+</div>
+
+
+<% include partials/footer.ejs %>

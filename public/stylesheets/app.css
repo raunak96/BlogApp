@@ -1,0 +1,10 @@
+i.icon{
+    font-size: 1.8em;
+}
+.container.main{
+    margin-top: 7.0em;
+}
+
+#delete{
+    display: inline; /*this is id for delete button in form(since form is block element,to make it inline we use this */   
+}                 
